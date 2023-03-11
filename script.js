@@ -80,7 +80,7 @@ inputUsd.onfocus = () => {
       limiter.classList.add('dispNone')
       output.classList.remove('dispNone')
 
-      if (!inputUsd.value) return
+      // if (!inputUsd.value) return
 
       if (inputUsd.value.length >= 7) {
         limiter.classList.remove('dispNone')
@@ -107,7 +107,7 @@ inputEur.onfocus = () => {
       limiter.classList.add('dispNone')
       output.classList.remove('dispNone')
 
-      if (!inputEur.value) return
+      // if (!inputEur.value) return
 
       if (inputEur.value.length >= 7) {
         limiter.classList.remove('dispNone')
@@ -132,7 +132,7 @@ btnUsd.onclick = () => {
   limiter.classList.add('dispNone')
   output.classList.remove('dispNone')
 
-  if (!inputUsd.value) return
+  // if (!inputUsd.value) return
 
   if (inputUsd.value.length >= 7) {
     limiter.classList.remove('dispNone')
@@ -155,7 +155,7 @@ btnEur.onclick = () => {
   limiter.classList.add('dispNone')
   output.classList.remove('dispNone')
 
-  if (!inputEur.value) return
+  // if (!inputEur.value) return
 
   if (inputEur.value.length >= 7) {
     limiter.classList.remove('dispNone')
