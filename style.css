@@ -204,6 +204,7 @@ p {
   font-weight: bold;
   font-size: 1.8rem;
   border-bottom: 0.2rem solid #333333;
+  padding-bottom: 0.2rem;
   color: #333333;
 }
 
@@ -293,6 +294,7 @@ span {
 
 .outputText {
   border-bottom: 0.2rem solid #e5e5e5;
+  padding-bottom: 0.2rem;
   color: #e5e5e5;
 }
 
