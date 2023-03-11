@@ -46,6 +46,7 @@ input::-webkit-inner-spin-button {
 @keyframes bulb-stroke-bottomOn {
   0% {
     opacity: 0.5;
+    fill: #333;
   }
 
   50% {
@@ -53,7 +54,7 @@ input::-webkit-inner-spin-button {
   }
 
   100% {
-    fill: #fed049;
+    fill: #e5e5e5;
     opacity: 1;
   }
 }
@@ -62,7 +63,7 @@ input::-webkit-inner-spin-button {
   0% {
     fill: #e5e5e5;
     transform: translateY(28px);
-    /* opacity: 0.5; */
+    opacity: 0.5;
   }
 
   50% {
@@ -297,4 +298,23 @@ span {
 
 .dispNone {
   display: none;
+}
+
+@media (max-width: 425px) {
+  @keyframes add-pulse-black {
+    0% {
+      transform: scale(0.9);
+      /* box-shadow: 0 0 0 0 rgb(107, 128, 104, 1); */
+    }
+
+    70% {
+      transform: scale(1);
+      /* box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); */
+    }
+
+    100% {
+      transform: scale(0.9);
+      /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+    }
+  }
 }

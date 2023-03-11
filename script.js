@@ -92,18 +92,13 @@ inputUsd.onfocus = () => {
         limiter.classList.add('dispNone')
         output.classList.remove('dispNone')
       }
+
       getUsdRate()
     }
   })
 }
 
 inputEur.onfocus = () => {
-  // document.addEventListener('keydown', function (event) {
-  //   if (event.key === 'Tab') {
-  //     event.preventDefault() // stop default behavior
-  //     // do something else instead
-  //   }
-  // })
   inputEur.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
       svgUsd.classList.remove('add-pulse-black')
