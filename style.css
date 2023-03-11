@@ -25,12 +25,12 @@ input::-webkit-inner-spin-button {
 
 .lightBulb {
   fill: transparent;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .lightOn {
   fill: #fed049;
-  animation: lightOn 2.5s;
+  animation: lightOn 0.3s;
 }
 
 #bulb-stroke-bottom {
@@ -38,10 +38,9 @@ input::-webkit-inner-spin-button {
 }
 
 .bulb-stroke-bottomOn {
-  fill: #a4b0c0 !important;
-  transition: all 0.6s ease-in-out;
-  animation: bulb-stroke-bottomOn 2.5s;
-  animation-delay: 0.1s;
+  fill: #e5e5e5 !important;
+  transition: all 0.3s ease-in-out;
+  animation: bulb-stroke-bottomOn 0.3s;
 }
 
 @keyframes bulb-stroke-bottomOn {
@@ -61,13 +60,13 @@ input::-webkit-inner-spin-button {
 
 @keyframes lightOn {
   0% {
-    fill: #333;
+    fill: #e5e5e5;
     transform: translateY(28px);
-    opacity: 0.5;
+    /* opacity: 0.5; */
   }
 
   50% {
-    fill: #333;
+    fill: #e5e5e5;
     transform: rotateZ(10deg);
   }
 
@@ -98,12 +97,11 @@ input::-webkit-inner-spin-button {
   gap: 1rem;
   height: 100vh;
   background-color: #e5e5e5;
-  background-image: url('./assets//images/mainBackground.svg');
-  /* background-image: url('./assets//images/wave.svg'); */
+  /* background-image: url('./assets//images/mainBackground.svg'); */
   background-attachment: fixed;
   background-size: cover;
   background-position: 20% 40%;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .container-currency {
@@ -121,8 +119,8 @@ input::-webkit-inner-spin-button {
 
 .currency-itemOn {
   opacity: 1;
-  animation: currency-itemOn 2.5s;
-  transition: all 0.6s ease-in-out;
+  animation: currency-itemOn 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes currency-itemOn {
@@ -217,12 +215,12 @@ span {
 .add-pulse-black {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
   transform: scale(1);
-  animation: add-pulse-black 2.5s infinite;
+  animation: add-pulse-black 2s infinite;
 }
 
 @keyframes add-pulse-black {
   0% {
-    transform: scale(0.85);
+    transform: scale(0.9);
     box-shadow: 0 0 0 0 rgb(107, 128, 104, 1);
   }
 
@@ -232,7 +230,7 @@ span {
   }
 
   100% {
-    transform: scale(0.85);
+    transform: scale(0.9);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
@@ -257,6 +255,10 @@ span {
   white-space: nowrap;
 }
 
+.button-3:focus {
+  outline: transparent;
+}
+
 .button-3:active {
   background-color: #298e46;
 }
@@ -264,8 +266,7 @@ span {
 /* js classes */
 .background {
   background-color: #2d2d30f9;
-  transition: all 0.6s ease-in-out;
-  transition-delay: 1.6s;
+  transition: all 0.3s ease-in-out;
 }
 
 .svgIcon {

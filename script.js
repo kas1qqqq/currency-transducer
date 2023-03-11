@@ -56,16 +56,10 @@ theme.onclick = () => {
   }
 })()
 
-// loader
-const myLoader = new Image(28, 8)
-myLoader.src = './assets/images/myLoader.gif'
+getDailyRate()
 
 async function getCurrency() {
   try {
-    if (!exchangeDate.innerText) {
-      exchangeDate.appendChild(myLoader)
-    }
-
     const response = await fetch(
       'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json'
     )
@@ -76,12 +70,65 @@ async function getCurrency() {
   }
 }
 
-getCurrency().then((arr) => {
-  const findExchangeDailyDate = arr.find((date) => date.exchangedate)
-  const getDailyRateDate = findExchangeDailyDate.exchangedate
+// keycode heplers
+inputUsd.onfocus = () => {
+  inputUsd.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {
+      svgUsd.classList.add('add-pulse-black')
+      svgEur.classList.remove('add-pulse-black')
 
-  return (exchangeDate.innerText = `Exchange rate at ${getDailyRateDate} by NBU`)
-})
+      limiter.classList.add('dispNone')
+      output.classList.remove('dispNone')
+
+      if (!inputUsd.value) return
+
+      if (inputUsd.value.length >= 7) {
+        limiter.classList.remove('dispNone')
+        output.classList.add('dispNone')
+        return
+      }
+
+      if (inputUsd.value.length >= 6) {
+        limiter.classList.add('dispNone')
+        output.classList.remove('dispNone')
+      }
+      getUsdRate()
+    }
+  })
+}
+
+inputEur.onfocus = () => {
+  // document.addEventListener('keydown', function (event) {
+  //   if (event.key === 'Tab') {
+  //     event.preventDefault() // stop default behavior
+  //     // do something else instead
+  //   }
+  // })
+  inputEur.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {
+      svgUsd.classList.remove('add-pulse-black')
+      svgEur.classList.add('add-pulse-black')
+
+      limiter.classList.add('dispNone')
+      output.classList.remove('dispNone')
+
+      if (!inputEur.value) return
+
+      if (inputEur.value.length >= 7) {
+        limiter.classList.remove('dispNone')
+        output.classList.add('dispNone')
+        return
+      }
+
+      if (inputEur.value.length >= 6) {
+        limiter.classList.add('dispNone')
+        output.classList.remove('dispNone')
+      }
+
+      getEurRate()
+    }
+  })
+}
 
 btnUsd.onclick = () => {
   svgUsd.classList.add('add-pulse-black')
@@ -91,16 +138,46 @@ btnUsd.onclick = () => {
   output.classList.remove('dispNone')
 
   if (!inputUsd.value) return
+
   if (inputUsd.value.length >= 7) {
     limiter.classList.remove('dispNone')
     output.classList.add('dispNone')
     return
   }
+
   if (inputUsd.value.length >= 6) {
     limiter.classList.add('dispNone')
     output.classList.remove('dispNone')
   }
 
+  getUsdRate()
+}
+
+btnEur.onclick = () => {
+  svgUsd.classList.remove('add-pulse-black')
+  svgEur.classList.add('add-pulse-black')
+
+  limiter.classList.add('dispNone')
+  output.classList.remove('dispNone')
+
+  if (!inputEur.value) return
+
+  if (inputEur.value.length >= 7) {
+    limiter.classList.remove('dispNone')
+    output.classList.add('dispNone')
+    return
+  }
+
+  if (inputEur.value.length >= 6) {
+    limiter.classList.add('dispNone')
+    output.classList.remove('dispNone')
+  }
+
+  getEurRate()
+}
+
+// currency helpers
+function getUsdRate() {
   getCurrency().then((arr) => {
     const findUsd = arr.find((usd) => usd.r030 === 840)
     const getUsd = findUsd.rate
@@ -112,24 +189,7 @@ btnUsd.onclick = () => {
   })
 }
 
-btnEur.onclick = () => {
-  svgUsd.classList.remove('add-pulse-black')
-  svgEur.classList.add('add-pulse-black')
-
-  limiter.classList.add('dispNone')
-  output.classList.remove('dispNone')
-
-  if (!inputEur.value) return
-  if (inputEur.value.length >= 7) {
-    limiter.classList.remove('dispNone')
-    output.classList.add('dispNone')
-    return
-  }
-  if (inputEur.value.length >= 6) {
-    limiter.classList.add('dispNone')
-    output.classList.remove('dispNone')
-  }
-
+function getEurRate() {
   getCurrency().then((arr) => {
     const findEur = arr.find((usd) => usd.r030 === 978)
     const getEur = findEur.rate
@@ -137,5 +197,14 @@ btnEur.onclick = () => {
       style: 'currency',
       currency: 'UAH',
     }).format(inputEur.value * getEur))
+  })
+}
+
+function getDailyRate() {
+  getCurrency().then((arr) => {
+    const findExchangeDailyDate = arr.find((date) => date.exchangedate)
+    const getDailyRateDate = findExchangeDailyDate.exchangedate
+
+    return (exchangeDate.innerText = `Exchange rate at ${getDailyRateDate} by NBU`)
   })
 }

@@ -1,2 +1,2 @@
-# Currency converter
-Currency converter with fetching data from the National Bank of Ukraine.
+# Currency transducer
+Currency transducer with fetching data from the National Bank of Ukraine.
